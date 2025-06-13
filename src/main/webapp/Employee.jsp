@@ -1,4 +1,6 @@
-<%--
+<%@ page import="org.example.cms.model.ComplaintModel" %>
+<%@ page import="org.example.cms.dto.ComplaintDTO" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 6/11/2025
@@ -26,30 +28,25 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">employee_id</th>
+            <th scope="col">description</th>
+            <th scope="col">date_submitted</th>
+            <th scope="col">status</th>
         </tr>
         </thead>
         <tbody>
+    <% List<ComplaintDTO> complaintDTOS = new ComplaintModel().getById(request.getServletContext(),request.getParameter("id"));
+    for (ComplaintDTO complaintDTO:complaintDTOS){
+        %>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row"><%=complaintDTO.getId()%></th>
+            <td><%=complaintDTO.getEmployee_id()%></td>
+            <td><%=complaintDTO.getDescription()%></td>
+            <td><%=complaintDTO.getDate()%></td>
+            <td><%=complaintDTO.getStatus()%></td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>John</td>
-            <td>Doe</td>
-            <td>@social</td>
-        </tr>
+
+        <% } %>
         </tbody>
     </table>
 
