@@ -1,4 +1,4 @@
-<%--
+<%@ page import="org.example.cms.model.UserModel" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 6/11/2025
@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <form class="m-5" action="/login" method="post">
+    <form class="m-5" action="/login" method="get">
 
         <div class="row">
             <div class="col-6">

@@ -15,7 +15,7 @@ import java.io.IOException;
 public class UserLoginServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
         String userRole = req.getParameter("user");
@@ -26,9 +26,9 @@ public class UserLoginServlet extends HttpServlet {
         if (user == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
         } else if (user.getUserRole().equals("admin")) {
-            resp.sendRedirect(req.getContextPath()+"/Admin.jsp");
+            resp.sendRedirect(req.getContextPath()+"/Admin.jsp"+"?id="+user.getId());
         } else if (user.getUserRole().equals("employee")) {
-            resp.sendRedirect(req.getContextPath()+"/Employee.jsp");
+            resp.sendRedirect(req.getContextPath()+"/Employee.jsp"+"?id="+user.getId());
         }
     }
 }
