@@ -1,0 +1,12 @@
+body{
+    background: #1A6959;
+}
+
+.nav{
+    background-color: rgba(35, 72, 116, 0.28);
+    margin-bottom: 30px;
+}
+
+a{
+    color: white!important;
+}
