@@ -20,11 +20,11 @@
             <div class="col-6">
                 <div class="mb-3">
                     <label for="name" class="form-label">User Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label for="Password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="Password" placeholder="****" name="password">
+                    <input type="password" class="form-control" id="Password" placeholder="****" name="password" required>
                 </div>
 
                 <div class="col-md-4">
