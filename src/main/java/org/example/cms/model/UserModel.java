@@ -1,7 +1,6 @@
-package org.example.cms.dao;
+package org.example.cms.model;
 
 import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletContextListener;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.example.cms.dto.UserDTO;
 
@@ -10,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO {
+public class UserModel {
     public static UserDTO findUser(ServletContext servletContext, UserDTO userDTO) {
 
         BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
@@ -31,5 +30,27 @@ public class UserDAO {
               throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public static boolean createUser(UserDTO employee, ServletContext servletContext) {
+        BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
+
+        try {
+            Connection connection = ds.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("Insert into users(username, password, email, role) values (?,?,?,?)");
+            preparedStatement.setString(1,employee.getUserName());
+            preparedStatement.setString(2,employee.getPassword());
+            preparedStatement.setString(3,employee.getEmail());
+            preparedStatement.setString(4,employee.getUserRole());
+            int i = preparedStatement.executeUpdate();
+
+            if (i > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return false;
     }
 }
