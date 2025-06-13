@@ -19,4 +19,10 @@ public class ComplaintDTO {
         this.description=description;
         this.date=date;
     }
+
+    public ComplaintDTO(String id, String description, String date) {
+        this.id=Integer.parseInt(id);
+        this.description=description;
+        this.date=date;
+    }
 }

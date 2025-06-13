@@ -32,10 +32,11 @@
             <th scope="col">description</th>
             <th scope="col">date_submitted</th>
             <th scope="col">status</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-    <% List<ComplaintDTO> complaintDTOS = new ComplaintModel().getById(request.getServletContext(),request.getParameter("id"));
+    <%List<ComplaintDTO> complaintDTOS = new ComplaintModel().getById(request.getServletContext(),request.getParameter("id"));
     for (ComplaintDTO complaintDTO:complaintDTOS){
         %>
         <tr>
@@ -44,6 +45,10 @@
             <td><%=complaintDTO.getDescription()%></td>
             <td><%=complaintDTO.getDate()%></td>
             <td><%=complaintDTO.getStatus()%></td>
+            <td>
+                <a class="btn btn-info" href="UpdateComplaint.jsp?id=<%= complaintDTO.getId()%>">Update</a>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </td>
         </tr>
 
         <% } %>

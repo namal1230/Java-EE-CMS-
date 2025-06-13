@@ -16,11 +16,11 @@
     <form class="row g-3" action="/new_complaint?id=<%= request.getParameter("id")%>" method="post">
         <div class="col-md-6">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" name="description">
+            <input type="text" class="form-control" id="description" name="description" required>
         </div>
         <div class="col-md-6">
             <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date">
+            <input type="date" class="form-control" id="date" name="date" required>
         </div>
 
         <div class="col-12">
