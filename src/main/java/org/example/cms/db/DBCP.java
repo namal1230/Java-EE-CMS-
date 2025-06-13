@@ -1,4 +1,4 @@
-package org.example.cms.DBCP;
+package org.example.cms.db;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;

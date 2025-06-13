@@ -73,6 +73,23 @@ public class ComplaintModel {
 
     }
 
+    public static boolean deleteComplaint(ServletContext servletContext, int id) {
+        BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
+        try {
+            Connection connection = ds.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM complaints WHERE complaint_id = ?");
+            preparedStatement.setInt(1, id);
+            int i = preparedStatement.executeUpdate();
+
+            if (i>0){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
     public List<ComplaintDTO> getById(ServletContext servletContext, String id) {
         BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
         try {

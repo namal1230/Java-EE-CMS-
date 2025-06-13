@@ -47,7 +47,7 @@
             <td><%=complaintDTO.getStatus()%></td>
             <td>
                 <a class="btn btn-info" href="UpdateComplaint.jsp?id=<%= complaintDTO.getId()%>">Update</a>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <a class="btn btn-danger" href="DeleteComplaint.jsp?id=<%= complaintDTO.getId()%>">Delete</a>
             </td>
         </tr>
 
