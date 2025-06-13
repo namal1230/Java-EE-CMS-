@@ -11,7 +11,7 @@ import org.example.cms.dto.UserDTO;
 
 import java.io.IOException;
 
-@WebServlet("/login/*")
+@WebServlet("/login")
 public class UserLoginServlet extends HttpServlet {
 
     @Override
@@ -19,13 +19,13 @@ public class UserLoginServlet extends HttpServlet {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
         String userRole = req.getParameter("user");
+
         ServletContext servletContext = getServletContext();
         UserDTO user = UserModel.findUser(servletContext, new UserDTO(name, password,userRole));
-        System.out.println(user);
+
         if (user == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
         } else if (user.getUserRole().equals("admin")) {
-            System.out.printf("AAAA");
             resp.sendRedirect(req.getContextPath()+"/Admin.jsp");
         } else if (user.getUserRole().equals("employee")) {
             resp.sendRedirect(req.getContextPath()+"/Employee.jsp");
