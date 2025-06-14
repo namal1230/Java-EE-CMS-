@@ -111,4 +111,20 @@ public class ComplaintModel {
             throw new RuntimeException(e);
         }
     }
+
+    public List<ComplaintDTO> getAllComplaints(ServletContext servletContext) {
+        BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
+        try {
+            Connection connection = ds.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM complaints");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<ComplaintDTO> complaintDTOS = new ArrayList<>();
+            while (resultSet.next()){
+                complaintDTOS.add(new ComplaintDTO(resultSet.getInt(1),resultSet.getInt(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5)));
+            }
+            return complaintDTOS;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
