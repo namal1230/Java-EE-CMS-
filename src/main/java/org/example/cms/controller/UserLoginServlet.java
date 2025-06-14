@@ -1,4 +1,4 @@
-package org.example.cms.Servlets;
+package org.example.cms.controller;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
