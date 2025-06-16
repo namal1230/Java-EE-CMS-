@@ -35,22 +35,17 @@
                         <option value="employee">Employee</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary m-3">Sign-In</button>
+                <button type="submit" class="btn btn-primary m-3" onclick="login()">Sign-In</button>
                 <a href="SignUp.jsp" type="button" class="btn btn-secondary m-3">Sign-Up</a>
             </div>
 
-
-            
         <div class="col-6">
             <img src="assets/pngtree-gradient-fingerprint-unlock-login-computer-png-image_5044947-removebg-preview.png" alt="">
         </div>
         </div>
-
-
-        
-        
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="js/createToken.js"></script>
 </body>
 </html>

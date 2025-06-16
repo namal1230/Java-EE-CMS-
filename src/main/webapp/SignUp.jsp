@@ -20,8 +20,8 @@
       <input type="text" class="form-control" id="name" placeholder="Nimal" name="name" required>
     </div>
     <div class="col-md-6">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="***" name="password" required>
+      <label for="Password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="Password" placeholder="***" name="password" required>
     </div>
     <div class="col-12">
       <label for="email" class="form-label">Email-Address</label>
@@ -29,11 +29,12 @@
     </div>
 
     <div class="col-12">
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="submit" class="btn btn-primary" onclick="login()">Sign in</button>
     </div>
   </form>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  <script src="js/createToken.js"></script>
 </body>
 </html>
