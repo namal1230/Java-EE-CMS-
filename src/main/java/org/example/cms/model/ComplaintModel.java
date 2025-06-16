@@ -57,7 +57,7 @@ public class ComplaintModel {
         BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
         try {
             Connection connection = ds.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE complaints SET description=? , date_submitted=? WHERE complaint_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE complaints SET description=? , date_submitted=? WHERE complaint_id = ? AND status = New");
             preparedStatement.setString(1,complaintDTO.getDescription());
             preparedStatement.setString(2, complaintDTO.getDate());
             preparedStatement.setInt(3,complaintDTO.getId());
@@ -77,7 +77,7 @@ public class ComplaintModel {
         BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
         try {
             Connection connection = ds.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM complaints WHERE complaint_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM complaints WHERE complaint_id = ? AND status = 'New'");
             preparedStatement.setInt(1, id);
             int i = preparedStatement.executeUpdate();
 
@@ -116,7 +116,7 @@ public class ComplaintModel {
         BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
         try {
             Connection connection = ds.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM complaints WHERE employee_id=? AND status='New'");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM complaints WHERE employee_id=?");
             preparedStatement.setInt(1, Integer.parseInt(id));
             ResultSet resultSet = preparedStatement.executeQuery();
             List<ComplaintDTO> complaintDTOS = new ArrayList<>();
