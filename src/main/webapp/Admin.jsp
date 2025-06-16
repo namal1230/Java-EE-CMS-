@@ -23,6 +23,7 @@
             <th scope="col">description</th>
             <th scope="col">date_submitted</th>
             <th scope="col">status</th>
+            <th scope="col">comments</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -37,8 +38,9 @@
             <td><%=complaintDTO.getDescription()%></td>
             <td><%=complaintDTO.getDate()%></td>
             <td><%=complaintDTO.getStatus()%></td>
+            <td><%=complaintDTO.getComment()%></td>
             <td>
-                <a class="btn btn-info" href="UpdateComplaint.jsp?id=<%= complaintDTO.getId()%>">Update</a>
+                <a class="btn btn-info" href="AdminComplaint.jsp?id=<%= complaintDTO.getId()%>">Update</a>
                 <a class="btn btn-danger" href="DeleteComplaint.jsp?id=<%= complaintDTO.getId()%>">Delete</a>
             </td>
         </tr>

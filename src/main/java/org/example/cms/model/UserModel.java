@@ -2,6 +2,7 @@ package org.example.cms.model;
 
 import jakarta.servlet.ServletContext;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.example.cms.dto.ComplaintDTO;
 import org.example.cms.dto.UserDTO;
 
 import java.sql.Connection;
@@ -53,5 +54,4 @@ public class UserModel {
 
         return false;
     }
-
 }

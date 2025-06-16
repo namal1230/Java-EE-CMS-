@@ -13,6 +13,7 @@ public class ComplaintDTO {
     private String description;
     private String date;
     private String status;
+    private String comment;
 
     public ComplaintDTO(int id, String description, String date) {
         this.employee_id=id;
@@ -24,5 +25,13 @@ public class ComplaintDTO {
         this.id=Integer.parseInt(id);
         this.description=description;
         this.date=date;
+    }
+
+    public ComplaintDTO(String id, String description, String date, String comment,String status) {
+        this.id=Integer.parseInt(id);
+        this.description=description;
+        this.date=date;
+        this.comment=comment;
+        this.status=status;
     }
 }
