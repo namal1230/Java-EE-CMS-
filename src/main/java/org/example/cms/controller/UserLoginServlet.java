@@ -25,7 +25,7 @@ public class UserLoginServlet extends HttpServlet {
             UserDTO user = UserModel.findUser(servletContext, new UserDTO(name, password, userRole));
 
             if (user == null) {
-                resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                resp.sendRedirect("error.jsp");
             } else if (user.getUserRole().equals("admin")) {
                 resp.sendRedirect(req.getContextPath() + "/Admin.jsp" + "?id=" + user.getId());
             } else if (user.getUserRole().equals("employee")) {
