@@ -13,10 +13,14 @@ import java.io.IOException;
 public class AdminDeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
+        try {
+            String id = req.getParameter("id");
 
-        if (ComplaintModel.deleteComplaint(req.getServletContext(), Integer.parseInt(id))) {
-            resp.sendRedirect(req.getContextPath() + "/Admin.jsp");
+            if (ComplaintModel.deleteComplaint(req.getServletContext(), Integer.parseInt(id))) {
+                resp.sendRedirect(req.getContextPath() + "/Admin.jsp");
+            }
+        }catch (Exception e){
+            resp.sendRedirect("error.jsp");
         }
     }
 }

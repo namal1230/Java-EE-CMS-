@@ -15,16 +15,20 @@ public class AdminComplaintServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
-        String description = req.getParameter("description");
-        String date = req.getParameter("date");
-        String eid = req.getParameter("eid");
-        String comment = req.getParameter("comment");
-        String status = req.getParameter("status");
+        try {
+            String id = req.getParameter("id");
+            String description = req.getParameter("description");
+            String date = req.getParameter("date");
+            String eid = req.getParameter("eid");
+            String comment = req.getParameter("comment");
+            String status = req.getParameter("status");
 
-        System.out.println(id+" "+description+" "+date+" "+eid);
-        if (ComplaintModel.adminComplaint(req.getServletContext(), new ComplaintDTO(id, description, date, comment,status))) {
-            resp.sendRedirect(req.getContextPath() + "/Admin.jsp");
+            System.out.println(id + " " + description + " " + date + " " + eid);
+            if (ComplaintModel.adminComplaint(req.getServletContext(), new ComplaintDTO(id, description, date, comment, status))) {
+                resp.sendRedirect(req.getContextPath() + "/Admin.jsp");
+            }
+        } catch (Exception e) {
+            resp.sendRedirect("error.jsp");
         }
     }
 }

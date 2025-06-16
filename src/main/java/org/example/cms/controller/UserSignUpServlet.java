@@ -16,14 +16,18 @@ public class UserSignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+        try {
+            String name = req.getParameter("name");
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
 
-        ServletContext servletContext = req.getServletContext();
+            ServletContext servletContext = req.getServletContext();
 
-        if (UserModel.createUser(new UserDTO(name, email, password, "employee"), servletContext)){
-            resp.sendRedirect(req.getContextPath() + "/Employee.jsp");
+            if (UserModel.createUser(new UserDTO(name, email, password, "employee"), servletContext)) {
+                resp.sendRedirect(req.getContextPath() + "/Employee.jsp");
+            }
+        } catch (Exception e) {
+            resp.sendRedirect("error.jsp");
         }
 
     }
