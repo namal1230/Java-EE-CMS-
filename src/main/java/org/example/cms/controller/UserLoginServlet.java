@@ -29,6 +29,7 @@ public class UserLoginServlet extends HttpServlet {
             } else if (user.getUserRole().equals("admin")) {
                 resp.sendRedirect(req.getContextPath() + "/Admin.jsp" + "?id=" + user.getId());
             } else if (user.getUserRole().equals("employee")) {
+                System.out.println("hiii");
                 resp.sendRedirect(req.getContextPath() + "/Employee.jsp" + "?id=" + user.getId());
             }
         } catch (Exception e) {

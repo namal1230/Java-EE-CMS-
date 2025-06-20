@@ -60,6 +60,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.38</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mindrot.bcrypt/bcrypt -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
     </dependencies>
 
     <build>

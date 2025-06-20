@@ -57,7 +57,7 @@ public class ComplaintModel {
         BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
         try {
             Connection connection = ds.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE complaints SET description=? , date_submitted=? WHERE complaint_id = ? AND status = New");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE complaints SET description=? , date_submitted=? WHERE complaint_id = ? AND status = 'New'");
             preparedStatement.setString(1,complaintDTO.getDescription());
             preparedStatement.setString(2, complaintDTO.getDate());
             preparedStatement.setInt(3,complaintDTO.getId());
@@ -78,6 +78,23 @@ public class ComplaintModel {
         try {
             Connection connection = ds.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM complaints WHERE complaint_id = ? AND status = 'New'");
+            preparedStatement.setInt(1, id);
+            int i = preparedStatement.executeUpdate();
+
+            if (i>0){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
+    public static boolean adminDeleteComplaint(ServletContext servletContext, int id) {
+        BasicDataSource ds = (BasicDataSource) servletContext.getAttribute("ds");
+        try {
+            Connection connection = ds.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM complaints WHERE complaint_id = ?");
             preparedStatement.setInt(1, id);
             int i = preparedStatement.executeUpdate();
 

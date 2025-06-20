@@ -16,7 +16,7 @@ public class AdminDeleteServlet extends HttpServlet {
         try {
             String id = req.getParameter("id");
 
-            if (ComplaintModel.deleteComplaint(req.getServletContext(), Integer.parseInt(id))) {
+            if (ComplaintModel.adminDeleteComplaint(req.getServletContext(), Integer.parseInt(id))) {
                 resp.sendRedirect(req.getContextPath() + "/Admin.jsp");
             }
         }catch (Exception e){
